@@ -5,14 +5,15 @@ import style from './homepage.module.sass';
 
 export default function HomePages() {
   const [search, setSearch] = useState('');
+  const [dropdown, setDropdown] = useState(false);
   const debounced = useDebounce(search);
   const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
     skip: debounced.length < 3
   });
 
   useEffect(() => {
-    console.log(debounced);
-  }, [debounced])
+    setDropdown(debounced.length > 3 && data?.length! > 0);
+  }, [debounced, data])
 
   return (
     <div className={style.home}>
@@ -27,9 +28,17 @@ export default function HomePages() {
           onChange={e => setSearch(e.target.value)}
         />
 
-        <div className={style.dropdown}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        </div>
+        {dropdown && <ul className={style.dropdown}>
+          { isLoading && <p className={style.loading}>Loading...</p> }
+          { data?.map(user => (
+            <li 
+              key={user.id}
+              className={style.li}
+            >
+              { user.login }
+            </li>
+          )) }
+        </ul>}
       </div>
     </div>
   )
