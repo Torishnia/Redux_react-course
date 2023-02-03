@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import FavouritesPage from './pages/FavouritesPage';
-import HomePages from './pages/HomePages';
+import HomePages from './pages/home/HomePage';
 import Navigation from './components/Navigation/Navigation';
 
 function App() {
