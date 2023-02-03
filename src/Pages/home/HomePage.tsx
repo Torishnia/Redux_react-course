@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDebounce } from '../../hooks/debounce';
 import { useSearchUsersQuery } from '../../store/github/github.api';
 import style from './homepage.module.sass';
 
 export default function HomePages() {
-  const { isLoading, isError, data } = useSearchUsersQuery('valeri');
+  const [search, setSearch] = useState('');
+  const debounced = useDebounce(search);
+  const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
+    skip: debounced.length < 3
+  });
 
-  console.log(data);
-  
+  useEffect(() => {
+    console.log(debounced);
+  }, [debounced])
 
   return (
     <div className={style.home}>
@@ -17,6 +23,8 @@ export default function HomePages() {
           type='text'
           className={style.input}
           placeholder='Search for Github username...'
+          value={search}
+          onChange={e => setSearch(e.target.value)}
         />
 
         <div className={style.dropdown}>
