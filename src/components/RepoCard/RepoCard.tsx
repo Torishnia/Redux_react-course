@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useActions } from '../../hooks/actions';
+import { useAppSelector } from '../../hooks/redux';
 import { IRepo } from '../../models/models';
 import style from './repocard.module.sass';
 
 export default function RepoCard({ repo }: { repo: IRepo }) {
-  const { addFavourite } = useActions();
+  const { addFavourite, removeFavourite } = useActions();
+  const { favourites } = useAppSelector(state => state.github);
+
+  const [isFav, setIsFav] = useState(favourites.includes(repo.html_url));
 
   const addToFavoutite = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
     addFavourite(repo.html_url);
+    setIsFav(true);
+  }
+
+  const removeFromFavoutite = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
+    removeFavourite(repo.html_url);
+    setIsFav(false);
   }
 
   return (
@@ -21,12 +32,19 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
         </p>
         <p className={style.description}>{repo.description}</p>
 
-        <button 
-          className={style.button}
+        {!isFav && <button 
+          className={style.buttonAdd}
           onClick={addToFavoutite}
         >
           Add to Favourite
-        </button>
+        </button>}
+
+        {isFav && <button 
+          className={style.buttonRemove}
+          onClick={removeFromFavoutite}
+        >
+          Remove
+        </button>}
         </a>
     </div>
   )
