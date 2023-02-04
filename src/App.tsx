@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import FavouritesPage from './pages/FavouritesPage';
+import FavouritesPage from './pages/fav/FavouritesPage';
 import HomePages from './pages/home/HomePage';
 import Navigation from './components/Navigation/Navigation';
 
