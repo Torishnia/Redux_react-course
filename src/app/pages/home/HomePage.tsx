@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import RepoCard from '../../components/RepoCard/RepoCard';
 import { useDebounce } from '../../hooks/debounce';
 import { useLazyGetUserReposQuery, useSearchUsersQuery } from '../../store/github/github.api';
@@ -24,34 +25,40 @@ export default function HomePages() {
   }
 
   return (
-    <div className={style.home}>
-      { isError && <p className={style.error}>Something went wrong...</p> }
+    <div className={style.container}>
 
-      <div className={style.container}>
+      <div className={style.error}>
+        { isError && <p>Something went wrong...</p> }
+      </div>
+
+      <div className={style.content}>
+
         <input
+          className={style.content_input}
           type='text'
-          className={style.input}
           placeholder='Search for Github username...'
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
 
-        {dropdown && <ul className={style.dropdown}>
-          { isLoading && <p className={style.loading}>Loading...</p> }
-          { data?.map(user => (
-            <li 
-              key={user.id}
-              onClick={() => clickHandler(user.login)}
-              className={style.li}
-            >
-              { user.login }
-            </li>
-          )) }
-        </ul>}
+        { 
+          dropdown && <ul className={style.content_dropdown}>
+            { isLoading && <p className={style.loading}>Loading...</p> }
+            { data?.map(user => (
+              <li 
+                key={user.id}
+                onClick={() => clickHandler(user.login)}
+                className={style.li}
+              >{ user.login }</li>
+              ))
+            }
+          </ul>
+        }
         <div className={style.repos}>
           { areReposLoading && <p className={style.reposLoading}>Repos are loading...</p> }
           { repos?.map(repo => <RepoCard repo={repo} key={repo.id}/>) }
         </div>
+
       </div>
     </div>
   )

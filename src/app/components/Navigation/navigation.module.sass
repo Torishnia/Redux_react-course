@@ -1,0 +1,75 @@
+@import '../../variables'
+
+.header
+  padding: 0 15px
+  display: flex
+  justify-content: center
+  background-color: #818cf8
+  height: 60px
+
+  &_content
+    display: flex
+    justify-content: space-between
+    min-width: 290px
+    width: 100%
+    max-width: 1000px
+
+  &_title
+    display: flex
+    align-items: center
+
+    & span
+      font-size: 20px
+      font-weight: bold
+
+  &_navigate
+    display: flex
+    justify-content: center
+    align-items: center
+    min-width: 75px
+
+.navigate
+  &_short
+    visibility: visible
+    display: flex
+    align-items: center
+    justify-content: center
+
+    @media screen and (min-width: 425px)
+      display: none
+
+    &_home
+      font-size: 20px
+
+    &_favourite
+      margin-left: 20px
+      font-size: 20px
+
+    & a
+      color: $colorBlack
+
+      &:hover
+        color: $colorWhite
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+        transition-duration: 150ms
+
+  &_full
+    display: none
+    @media screen and (min-width: 425px)
+      display: flex
+      justify-content: center
+      align-items: center
+
+    &_home
+
+    &_favourite
+      margin-left: 20px
+      margin-right: 15px
+
+    & a
+      color: $colorBlack
+
+      &:hover
+        color: $colorWhite
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+        transition-duration: 150ms

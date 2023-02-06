@@ -2,12 +2,13 @@
 
 .container
   position: relative
-  left: 25px
   border-width: 1px
   border-radius: 4px
-  width: 505px
+  width: 100%
+  min-width: 290px
   padding: 12px 20px
   margin-bottom: 8px
+  box-sizing: border-box
   &:hover
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)
     background: #c4b5fd
@@ -38,8 +39,8 @@
 
 .buttonAdd
   padding: 8px 16px
-  background: #dc2626
-  color: #f8fafc
+  background: $colorRed
+  color: $colorWhite
   border: none
   border-radius: 8px
   cursor: pointer
@@ -53,7 +54,7 @@
 .buttonRemove
   padding: 8px 16px
   background: #44403c
-  color: #f8fafc
+  color: $colorWhite
   border: none
   border-radius: 8px
   cursor: pointer

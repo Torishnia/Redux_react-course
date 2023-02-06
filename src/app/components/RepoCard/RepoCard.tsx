@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useActions } from '../../hooks/actions';
 import { useAppSelector } from '../../hooks/redux';
 import { IRepo } from '../../models/models';
@@ -19,12 +20,13 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
   const removeFromFavoutite = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
     removeFavourite(repo.html_url);
-    setIsFav(false);
+    setIsFav(false); 
   }
 
   return (
     <div className={style.container}>
       <a href={repo.html_url} target='_blank' rel="noreferrer">
+
         <h2 className={style.text}>{repo.full_name}</h2>
         <p className={style.repo}>
           Forks: <span className={style.forks}>{repo.forks}</span>
@@ -45,6 +47,7 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
         >
           Remove
         </button>}
+
         </a>
     </div>
   )
