@@ -6,7 +6,7 @@ import style from './navigation.module.sass';
 
 export default function Navigation() {
   const isActiveClass = {
-    color: '#f8fafc',
+    color: '#60a5fa',
   }
 
   return (

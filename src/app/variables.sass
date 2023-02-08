@@ -2,3 +2,9 @@ $colorBlack: #000
 $colorWhite: #f8fafc
 $colorRed: #dc2626
 $colorDarkpurple: #4c1d95
+
+@mixin background($imgpath, $repeat: repeat, $size: 50%)
+  background:
+    image: url($imgpath)
+    repeat: $repeat
+    size: $size
