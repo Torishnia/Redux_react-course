@@ -15,7 +15,7 @@ function App() {
       
       <div className={style.content}>
         <Routes>
-          <Route path='github-username-search' element={ <HomePages /> } />
+          <Route path='github-username-search/' element={ <HomePages /> } />
           <Route path='github-username-search/favourites' element={ <FavouritesPage /> } />
         </Routes>
       </div>
