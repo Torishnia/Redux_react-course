@@ -21,13 +21,13 @@ export default function Navigation() {
           <div className={style.navigate_short}>
 
             <div className={style.navigate_short_home}>
-              <NavLink end style={({ isActive }) => isActive ? isActiveClass : {} } to='/'>
+              <NavLink end style={({ isActive }) => isActive ? isActiveClass : {} } to='github-username-search'>
                 <IoHome />
               </NavLink>
             </div>
 
             <div className={style.navigate_short_favourite}>
-              <NavLink style={({ isActive }) => isActive ? isActiveClass : {} } to='/favourites'>
+              <NavLink style={({ isActive }) => isActive ? isActiveClass : {} } to='github-username-search/favourites'>
                 <BsBookmarkHeartFill />
               </NavLink>
             </div>
@@ -36,13 +36,13 @@ export default function Navigation() {
           <div className={style.navigate_full}>
 
             <div className={style.navigate_full_home}>
-              <NavLink end style={({ isActive }) => isActive ? isActiveClass : {} } to='/'>
+              <NavLink end style={({ isActive }) => isActive ? isActiveClass : {} } to='github-username-search'>
                 Home
               </NavLink>
             </div>
 
             <div className={style.navigate_full_favourite}>
-              <NavLink style={({ isActive }) => isActive ? isActiveClass : {} } to='/favourites'>
+              <NavLink style={({ isActive }) => isActive ? isActiveClass : {} } to='github-username-search/favourites'>
                 Favourites
               </NavLink>
             </div>
